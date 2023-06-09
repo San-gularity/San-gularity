@@ -1,11 +1,11 @@
-<br>
-<h1 align = "center">Hey there! 🐢</h1>
+<h1 align = "center">Hey there! Welcome to my page! 🐢</h1>
 <br>
 
 ## 👨‍💻 Software Developer
 
-Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile skill set and a love for pushing the boundaries of technology. I possess a solid foundation in <b>Computer Science</b> and a versatile skill set that empowers me to thrive in diverse software development domains. Undergraduate from CMRIT, India.
+I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile skill set and a love for pushing the boundaries of technology. I possess a solid foundation in <b>Computer Science</b> and a versatile skill set that empowers me to thrive in diverse software development domains. Undergraduate from CMRIT, India.
 
+<br>
 <h2> 🚀 &nbsp;Some Tools I Have Used and Learned</h2>
 <p align="left">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="vscode" width="45" height="45"/>
@@ -44,6 +44,7 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=San-gularity&theme=dark&border_radius=5)](https://git.io/streak-stats)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
+<br>
 
 *Hobbies: Playing guitar and engaging in calisthenics and endurance running.*
 <br>

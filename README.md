@@ -32,7 +32,7 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
     📧 <b>Email</b>: <a href="mailto:sanathshetty8817@gmail.com" style="color: #0066CC; text-decoration: none;">sanathshetty8817@gmail.com</a>
   </li>
   <li style="font-size: 18px; margin-bottom: 10px;">
-    💼 <b>LinkedIn</b>: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">Your LinkedIn Profile</a>
+    💼 <b>LinkedIn</b>: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">sanath808</a>
   </li>
   <li style="font-size: 18px; margin-bottom: 10px;">
     🌐 <b>Portfolio Website</b>: <a href="making" style="color: #0066CC; text-decoration: none;">Making</a>

@@ -6,10 +6,12 @@ Hey there! 👋 I'm Sanath Manjunath, a passionate software developer with a ver
 
 ### 💻 Technical Skills
 
-- **Web Development**: I have a keen interest in crafting beautiful and interactive web experiences. I'm proficient in HTML, CSS, JavaScript, and popular frameworks like ReactJs
-- **Android Development**: With a knack for mobile development, I'm experienced in building feature-rich Android applications using Java.
-- **Problem Solving**: As a software developer, I thrive on solving complex problems. I enjoy breaking down challenges into smaller, manageable tasks and implementing efficient solutions.
-- **Game Development**: I love bringing virtual worlds to life through games. I have hands-on experience with game development frameworks like Unity and tools like C# scripting.
+## 💻 Technical Skills
+
+- **Web Development**: HTML, CSS, JavaScript, React, Vue.js
+- **Android Development**: Java, Kotlin
+- **Game Development**: Unity, C#
+- **Problem Solving**
 
 ### 📩 Where to Reach Me
 

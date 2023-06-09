@@ -50,4 +50,5 @@ I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile sk
 *Hobbies include Playing guitar🎸 and engaging in calisthenics and endurance running🏃‍♂️.*
 <br>
  <img src="https://komarev.com/ghpvc/?username=San-gularity&style=flat-square&color=blue" alt="profile views"/>
+ <br>
 <p align = "center">🏁🏁</p>

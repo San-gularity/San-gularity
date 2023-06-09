@@ -35,10 +35,6 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 </a><p>sanathshetty8817@gmail.com</p>
  <br>
  <img src="https://komarev.com/ghpvc/?username=your-github-username&style=flat-square&color=blue" alt=""/>
-
- <h2 style="font-size: 24px; color: #333333;">📩 Github Stats</h2>
-[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=San-gularity&theme=dark&border_radius=5)](https://git.io/streak-stats)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
 </div>
 
 <h2 style="font-size: 24px; color: #333333;">📩 Github Stats</h2>

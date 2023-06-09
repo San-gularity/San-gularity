@@ -37,9 +37,10 @@ I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile sk
 <a href="mailto:sanathshetty8817@gmail.com">
   <img src="https://img.shields.io/badge/Email-red?style=for-the-badge&logo=email&logoColor=white" alt="Email Badge"/>
 </a> 
- <p>sanathshetty8817@gmail.com</p><br>
+ <p>sanathshetty8817@gmail.com</p>
 </div>
 <br>
+
 <h2 style="font-size: 24px; color: #333333;"> My Github Stats</h2>
 
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=San-gularity&theme=dark&border_radius=5)](https://git.io/streak-stats)

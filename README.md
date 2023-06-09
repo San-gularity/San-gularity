@@ -26,18 +26,15 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 </p>
 
 <h2 style="font-size: 24px; color: #333333;">📩 Reach out to me!</h2>
+<div id="badges">
+  <a href="https://www.linkedin.com/in/sanath808/">
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+<a href="mailto:sanathshetty8817@gmail.com">
+  <img src="https://img.shields.io/badge/Email-red?style=for-the-badge&logo=email&logoColor=white" alt="Email Badge"/>
+</a><p>sanathshetty8817@gmail.com</p>
 
-<ul>
-  <li style="font-size: 18px; margin-bottom: 10px;">
-    📧 <b>Email</b>: <a href="mailto:sanathshetty8817@gmail.com" style="color: #0066CC; text-decoration: none;">sanathshetty8817@gmail.com</a>
-  </li>
-  <li style="font-size: 18px; margin-bottom: 10px;">
-    💼 <b>LinkedIn</b>: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">sanath808</a>
-  </li>
-  <li style="font-size: 18px; margin-bottom: 10px;">
-    🌐 <b>Portfolio Website</b>: <a href="making" style="color: #0066CC; text-decoration: none;">Making</a>
-  </li>
-</ul>
+</div>
 
 *Hobbies: Playing guitar and engaging in calisthenics and endurance running.*
 

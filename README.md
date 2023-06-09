@@ -29,7 +29,7 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 ### 📩 Where to Reach Me
 
 - 📧 [Email](mailto:sanathshetty8817@gmail.com)
--  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg" /> [LinkedIn](https://www.linkedin.com/in/sanath808/)
+-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg" width="45" height="45"/> [LinkedIn](https://www.linkedin.com/in/sanath808/)
 - 🌐 Portfolio Website: making
 
 *Hobbies: Playing guitar and engaging in calisthenics and endurance running.*

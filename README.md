@@ -32,11 +32,13 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
   </a>
 <a href="mailto:sanathshetty8817@gmail.com">
   <img src="https://img.shields.io/badge/Email-red?style=for-the-badge&logo=email&logoColor=white" alt="Email Badge"/>
-</a><p>sanathshetty8817@gmail.com</p>
- <br>
- <img src="https://komarev.com/ghpvc/?username=your-github-username&style=flat-square&color=blue" alt=""/>
+</a>
+ <img src="https://komarev.com/ghpvc/?username=San-gularity&style=flat-square&color=blue" alt="profile views"/>
+ <p>sanathshetty8817@gmail.com</p>
 </div>
+---
 
+### :fire: My Stats :
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=San-gularity&theme=dark&border_radius=5)](https://git.io/streak-stats)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
 

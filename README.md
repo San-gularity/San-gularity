@@ -32,7 +32,7 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
   </a>
 <a href="mailto:sanathshetty8817@gmail.com">
   <img src="https://img.shields.io/badge/Email-red?style=for-the-badge&logo=email&logoColor=white" alt="Email Badge"/>
-</a> <p>sanathshetty8817@gmail.com</p><br>
+</a> sanathshetty8817@gmail.com
  <img src="https://komarev.com/ghpvc/?username=San-gularity&style=flat-square&color=blue" alt="profile views"/>
 </div>
 ---

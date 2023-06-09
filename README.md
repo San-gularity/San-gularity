@@ -36,8 +36,8 @@ I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile sk
   </a>
 <a href="mailto:sanathshetty8817@gmail.com">
   <img src="https://img.shields.io/badge/Email-red?style=for-the-badge&logo=email&logoColor=white" alt="Email Badge"/>
-</a> sanathshetty8817@gmail.com<br>
- <img src="https://komarev.com/ghpvc/?username=San-gularity&style=flat-square&color=blue" alt="profile views"/>
+</a> 
+ <p>sanathshetty8817@gmail.com</p><br>
 </div>
 <br>
 <h2 style="font-size: 24px; color: #333333;"> My Github Stats</h2>
@@ -46,6 +46,7 @@ I'm <b>Sanath Manjunath</b>, a passionate software developer with a versatile sk
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
 <br>
 
-*Hobbies: Playing guitar and engaging in calisthenics and endurance running.*
+*Hobbies include Playing guitar🎸 and engaging in calisthenics and endurance running🏃‍♂️.*
 <br>
+ <img src="https://komarev.com/ghpvc/?username=San-gularity&style=flat-square&color=blue" alt="profile views"/>
 <p align = "center">🏁🏁</p>

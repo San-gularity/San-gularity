@@ -27,8 +27,8 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 </p>
 
 ### 📩 Where to Reach Me
-
-- <h3> 📧 [Email](mailto:sanathshetty8817@gmail.com)
+<h3> 
+- 📧 [Email](mailto:sanathshetty8817@gmail.com)
 - 💼 [LinkedIn](https://www.linkedin.com/in/sanath808/)
 - 🌐 Portfolio Website: making </h3>
 

@@ -39,7 +39,7 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 </div>
 <h2 style="font-size: 24px; color: #333333;">📩 Github Stats</h2>
 ![Sanath's GitHub stats](https://github-readme-stats.vercel.app/api?username=San-gularity&show_icons=true&theme=vision-friendly-dark)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/San-gularity/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=San-gularity&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
 
 *Hobbies: Playing guitar and engaging in calisthenics and endurance running.*
 

@@ -26,10 +26,23 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="45" height="45"/>
 </p>
 
-### 📩 Where to Reach Me
-    📧 Email: your-email@example.com
-    💼 LinkedIn: Your LinkedIn Profile
-    🌐 Portfolio Website: Your Portfolio Website
+<h2 style="font-size: 24px; color: #333333;">📩 Reach out to me!</h2>
+
+<p style="font-size: 18px;">
+  Let's connect and discuss exciting opportunities or chat about the latest trends in technology:
+</p>
+
+<ul>
+  <li style="font-size: 16px; margin-bottom: 10px;">
+    📧 Email: <a href="mailto:sanathshetty8817@gmail.com" style="color: #0066CC; text-decoration: none;">sanathshetty8817@gmail.com</a>
+  </li>
+  <li style="font-size: 16px; margin-bottom: 10px;">
+    💼 LinkedIn: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">Your LinkedIn Profile</a>
+  </li>
+  <li style="font-size: 16px; margin-bottom: 10px;">
+    🌐 Portfolio Website: <a href="making" style="color: #0066CC; text-decoration: none;">Making</a>
+  </li>
+</ul>
 
 *Hobbies: Playing guitar and engaging in calisthenics and endurance running.*
 

@@ -1,4 +1,3 @@
-# About Me
 
 ## 👨‍💻 Software Developer
 

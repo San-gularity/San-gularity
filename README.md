@@ -28,19 +28,15 @@ Hey there! 👋 I'm <b>Sanath Manjunath</b>, a passionate software developer wit
 
 <h2 style="font-size: 24px; color: #333333;">📩 Reach out to me!</h2>
 
-<p style="font-size: 18px;">
-  Let's connect and discuss exciting opportunities or chat about the latest trends in technology:
-</p>
-
 <ul>
-  <li style="font-size: 16px; margin-bottom: 10px;">
-    📧 Email: <a href="mailto:sanathshetty8817@gmail.com" style="color: #0066CC; text-decoration: none;">sanathshetty8817@gmail.com</a>
+  <li style="font-size: 18px; margin-bottom: 10px;">
+    📧 <b>Email</b>: <a href="mailto:sanathshetty8817@gmail.com" style="color: #0066CC; text-decoration: none;">sanathshetty8817@gmail.com</a>
   </li>
-  <li style="font-size: 16px; margin-bottom: 10px;">
-    💼 LinkedIn: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">Your LinkedIn Profile</a>
+  <li style="font-size: 18px; margin-bottom: 10px;">
+    💼 <b>LinkedIn</b>: <a href="https://www.linkedin.com/in/sanath808/" style="color: #0066CC; text-decoration: none;">Your LinkedIn Profile</a>
   </li>
-  <li style="font-size: 16px; margin-bottom: 10px;">
-    🌐 Portfolio Website: <a href="making" style="color: #0066CC; text-decoration: none;">Making</a>
+  <li style="font-size: 18px; margin-bottom: 10px;">
+    🌐 <b>Portfolio Website</b>: <a href="making" style="color: #0066CC; text-decoration: none;">Making</a>
   </li>
 </ul>
 

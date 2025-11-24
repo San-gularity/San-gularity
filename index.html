@@ -731,7 +731,7 @@
             .to('.hero-sub', { opacity: 1, duration: 1 }, "-=1")
             .to('.hero-desc', { opacity: 1, y: 0, duration: 1 }, "-=0.8")
             .to('.scroll-indicator', { opacity: 1, duration: 1 }, "-=0.5")
-            .to('#navbar', { y: -100, opacity: 0, duration: 1 }, "-=1");
+            .from('#navbar', { y: -100, opacity: 0, duration: 1 }, "-=1");
 
         // C. Card Parallax & Hover
         const chapters = document.querySelectorAll('.chapter-card');

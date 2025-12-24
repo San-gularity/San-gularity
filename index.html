@@ -252,7 +252,7 @@
                         <div class="flex flex-col lg:flex-row gap-8 w-full lg:col-span-2">
                             <!-- Chapter 1: Profile -->
                             <div id="about" class="chapter-card group relative h-auto min-h-[500px] w-full lg:w-2/3 perspective-1000" data-speed="0.9">
-                                <div class="card-inner absolute inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+                                <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
                                     <div class="flex justify-between items-start border-b border-gold/10 pb-4 mb-6">
                                         <span class="text-xs font-mono text-gold font-bold">01. PROFILE</span>
                                         <span class="text-xs font-mono text-white font-bold">M.S. CS @ UIC</span>
@@ -280,7 +280,7 @@
                         </div>
                         <!-- Chapter 2: Skills (Arsenal) below both on desktop) -->
                         <div id="skills" class="chapter-card group relative h-auto min-h-[500px] w-full perspective-1000 mt-12 lg:mt-16 lg:col-span-2" data-speed="1.1">
-                            <div class="card-inner absolute inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+                            <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
                                 <div class="flex justify-between items-start border-b border-gold/10 pb-4 mb-6">
                                     <span class="text-xs font-mono text-gold">02. ARSENAL</span>
                                     <span class="text-xs font-mono text-gray-600">Tech Stack</span>
@@ -459,7 +459,7 @@
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">RAG Research Pipeline</h3>
-                            <a href="#" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
+                            <a href="https://github.com/San-gularity/delta_RAG_pipeline" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
                         </div>
                         <p class="text-sm text-gray-400 mb-6 leading-relaxed">
                             Built an end-to-end RAG pipeline that ingests and processes hundreds of academic PDFs using automated extraction, chunking, metadata tagging, and embedding generation for downstream LLM/NLP tasks.
@@ -482,7 +482,7 @@
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">AI Timetable Generator</h3>
-                            <a href="https://github.com/sanath808/Timetable_Generator_Using_Genetic_Algorithm_And_AI" target="_blank" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
+                            <a href="https://github.com/San-gularity/Time-Table-Generator" target="_blank" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
                         </div>
                         <p class="text-sm text-gray-400 mb-6 leading-relaxed">
                             A scheduling automation tool leveraging <strong>Genetic Algorithms</strong> and constraint logic programming. Solves complex faculty-student time conflicts and was deployed for departmental usage.
@@ -537,6 +537,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <!-- Mission Toggle Script -->
+    <script>
+    // Toggle mission data visibility on mobile
+    function toggleMission(id, btn) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.classList.contains('hidden')) {
+            el.classList.remove('hidden');
+            btn.textContent = '- Hide Mission Data';
+        } else {
+            el.classList.add('hidden');
+            btn.textContent = '+ View Mission Data';
+        }
+    }
+    </script>
 
     <script>
     // Theme toggle logic

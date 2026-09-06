@@ -28,17 +28,6 @@ Before that: **TopRankers** (React Native app modernization, an ML tagging pipel
 
 ---
 
-### 🎮 Play something, right now
-
-Two games I wrote in Unity years ago, recompiled to WebGL. No download, no install — they just run.
-
-| | | |
-|---|---|---|
-| 🚀 **[Flappy Rocket](https://san-gularity.github.io/flappy-rocket/)** | Flappy Bird with a rocket. Endless obstacles, high score follows you back. | [source](https://github.com/San-gularity/Flappy-Rocket-Unity) |
-| 👾 **[Space-Boy](https://san-gularity.github.io/space-boy/)** | A 2D platformer, and the first game I ever finished. | [source](https://github.com/San-gularity/2D-Platfromer-Unity) |
-
----
-
 ### 🛠️ Things I've built
 
 | Project | What it does | |
@@ -48,6 +37,17 @@ Two games I wrote in Unity years ago, recompiled to WebGL. No download, no insta
 | **[Leetion](https://chromewebstore.google.com/detail/leetcode-to-notion/kdlncolgahgakhkfaipeillkppfhooag)** | Save a LeetCode problem straight into Notion, one click. | `Chrome` |
 | **[Clown GPT](https://chromewebstore.google.com/detail/clown-gpt-chatgpt-copy-bl/ohdffmcikkokalnfobnpbipkicimkppg)** | Blocks copying on ChatGPT and roasts you for trying. | `Chrome` |
 | **[Timetable Generator](https://github.com/San-gularity/Time-Table-Generator)** | Genetic algorithms against faculty-student scheduling conflicts. | `Python` |
+
+---
+
+### 🎮 Play something, right now
+
+Two games I wrote in Unity years ago, recompiled to WebGL. No download, no install — they just run.
+
+| | | |
+|---|---|---|
+| 🚀 **[Flappy Rocket](https://san-gularity.github.io/flappy-rocket/)** | Flappy Bird with a rocket. Endless obstacles, high score follows you back. | [source](https://github.com/San-gularity/Flappy-Rocket-Unity) |
+| 👾 **[Space-Boy](https://san-gularity.github.io/space-boy/)** | A 2D platformer, and the first game I ever finished. | [source](https://github.com/San-gularity/2D-Platfromer-Unity) |
 
 ---
 
@@ -87,8 +87,6 @@ Two games I wrote in Unity years ago, recompiled to WebGL. No download, no insta
 <img src="https://streak-stats.demolab.com?user=San-gularity&theme=dark&border_radius=8&background=030305&border=D4AF37&ring=D4AF37&fire=D4AF37&currStreakLabel=D4AF37&hide_border=false" alt="GitHub streak" />
 
 <br /><br />
-
-**🐍 Watch a snake eat my contributions**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/San-gularity/San-gularity/output/github-snake-dark.svg" />

@@ -3,7 +3,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:030305,55:2a2438,100:D4AF37&height=190&section=header&text=Sanath%20Manjunath&fontSize=46&fontColor=F3E5AB&fontAlignY=36&desc=Software%20Engineer%20%26%20AI%20Engineer&descSize=17&descAlignY=58" alt="" />
 
 <a href="https://san-gularity.github.io/">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=21&pause=1200&color=D4AF37&center=true&vCenter=true&width=620&lines=M.S.+Computer+Science+%40+UIC+%E2%80%94+GPA+4.0;Ex-RadioFX%2C+TopRankers%2C+DRDO;I+build+things+that+ship;Two+of+my+games+run+in+your+browser+%E2%86%92" alt="Software Engineer and AI Engineer" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=21&pause=1200&color=D4AF37&center=true&vCenter=true&width=620&lines=M.S.+Computer+Science+%40+UIC+%E2%80%94+GPA+3.6;Ex-RadioFX%2C+TopRankers%2C+DRDO;I+build+things+that+ship;Two+of+my+games+run+in+your+browser+%E2%86%92" alt="Software Engineer and AI Engineer" />
 </a>
 
 <br />

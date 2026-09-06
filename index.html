@@ -92,16 +92,18 @@
             mix-blend-mode: exclusion;
             z-index: 100;
             transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, opacity 0.3s, background-color 0.3s;
+            transition: width 0.3s, height 0.3s, opacity 0.3s, background-color 0.3s, border-color 0.3s;
             opacity: 0.8;
-            filter: blur(2px);
         }
-        
+
+        /* A ring, not a 60px blurred white disc. The old one sat over whatever
+           you were reading and made the section look like it had gone soft. */
         .cursor-active {
-            width: 60px;
-            height: 60px;
-            opacity: 0.3;
-            background: #ffffff;
+            width: 48px;
+            height: 48px;
+            opacity: 0.9;
+            background: transparent;
+            border: 1px solid #D4AF37;
         }
 
         /* Utility */
@@ -164,6 +166,75 @@
         .border-gold-glow {
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
+
+        /* The bar used to be mix-blend-difference text floating on the stars,
+           which read as nothing at all. Give it a surface to sit on. */
+        .nav-shell {
+            background: rgba(3, 3, 5, 0.78);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+        }
+
+        .gold-btn {
+            border: 1px solid rgba(212, 175, 55, 0.55);
+            color: #F3E5AB;
+            background: rgba(212, 175, 55, 0.08);
+            transition: background .25s, border-color .25s, color .25s, box-shadow .25s;
+        }
+        .gold-btn:hover {
+            background: rgba(212, 175, 55, 0.18);
+            border-color: #D4AF37;
+            color: #ffffff;
+            box-shadow: 0 0 22px rgba(212, 175, 55, 0.22);
+        }
+
+        /* A slow band of light crossing the card. Opacity and position only —
+           nothing here rasterises the text, so it stays sharp. */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(212, 175, 55, 0.10), transparent);
+            transform: skewX(-18deg);
+            transition: left .9s cubic-bezier(.2, .7, .3, 1);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .project-card:hover::before { left: 140%; }
+
+        .project-card {
+            isolation: isolate;
+            transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+        }
+        .card-body { position: relative; z-index: 1; }
+        .project-card:hover {
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45), 0 0 26px rgba(212, 175, 55, 0.10);
+        }
+
+        /* Makes the whole card one click target without nesting anchors. */
+        .stretch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+        .above-stretch { position: relative; z-index: 3; }
+
+        @keyframes dot-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.35); }
+            50%      { box-shadow: 0 0 0 7px rgba(212, 175, 55, 0); }
+        }
+        .job-item > span { animation: dot-pulse 3.2s ease-out infinite; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .job-item > span { animation: none; }
+            .project-card::before { transition: none; }
+            .project-card:hover { transform: none; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-gold selection:text-black">
@@ -178,29 +249,32 @@
     <div class="cursor-follower" id="cursor"></div>
 
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 left-0 w-full z-40 px-6 py-6" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <nav class="fixed top-0 left-0 w-full z-40" id="navbar">
+      <div class="nav-shell">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#hero" class="text-sm tracking-widest font-bold uppercase mix-blend-difference z-50 relative group">
+            <a href="#hero" class="font-serif text-xl md:text-2xl font-semibold tracking-wide text-white z-50 relative group">
                 San<span class="text-gold group-hover:text-white transition-colors">.</span>Archive
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-12 text-xs uppercase tracking-widest font-sans text-gray-400 mix-blend-difference">
-                <a href="#about" class="nav-link hover:text-white transition-colors">Profile</a>
-                <a href="#skills" class="nav-link hover:text-white transition-colors">Arsenal</a>
-                <a href="#experience" class="nav-link hover:text-white transition-colors">Trajectory</a>
-                <a href="#projects" class="nav-link hover:text-white transition-colors">Missions</a>
-                <a href="#footer" class="text-gold hover:text-white transition-colors">Contact</a>
+            <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest font-sans font-medium text-gray-200">
+                <a href="#about" class="nav-link hover:text-gold transition-colors">Profile</a>
+                <a href="#skills" class="nav-link hover:text-gold transition-colors">Arsenal</a>
+                <a href="#experience" class="nav-link hover:text-gold transition-colors">Trajectory</a>
+                <a href="#projects" class="nav-link hover:text-gold transition-colors">Missions</a>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest">R&Eacute;SUM&Eacute; &#8599;</a>
+                <a href="#footer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest">CONTACT</a>
             </div>
 
             <!-- Mobile Hamburger -->
-            <button class="md:hidden z-50 text-white mix-blend-difference focus:outline-none" id="menu-btn">
+            <button class="md:hidden z-50 text-white focus:outline-none" id="menu-btn">
                 <div class="w-6 h-0.5 bg-current mb-1.5 transition-all origin-right bar-1"></div>
                 <div class="w-6 h-0.5 bg-current mb-1.5 transition-all bar-2"></div>
                 <div class="w-6 h-0.5 bg-gold transition-all origin-right bar-3"></div>
             </button>
         </div>
+      </div>
     </nav>
 
     <!-- MOBILE MENU OVERLAY -->
@@ -211,6 +285,7 @@
             <a href="#experience" class="mobile-link text-3xl font-serif text-white hover:text-gold italic transition-colors">Trajectory</a>
             <a href="#projects" class="mobile-link text-3xl font-serif text-white hover:text-gold italic transition-colors">Missions</a>
             <a href="#footer" class="mobile-link text-3xl font-serif text-gold hover:text-white italic transition-colors">Contact</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="gold-btn mt-4 px-6 py-3 rounded text-sm tracking-widest uppercase">R&eacute;sum&eacute; &#8599;</a>
         </div>
     </div>
 
@@ -231,10 +306,15 @@
                     </h1>
 
                     <div class="mt-8 max-w-lg mx-auto overflow-hidden">
-                        <p class="hero-desc font-sans text-sm md:text-base text-gray-300 font-light leading-relaxed opacity-0 transform translate-y-4">
-                            Bridging the void between complex backend logic and elegant frontend experiences. 
-                            <span class="text-gold/80 block mt-2">Full Stack Engineer & Celestial Architect</span>
+                        <p class="hero-desc font-sans text-base md:text-lg text-gold font-medium tracking-wide leading-relaxed opacity-0 transform translate-y-4">
+                            Software Engineer &amp; AI Engineer
                         </p>
+                    </div>
+
+                    <div class="hero-desc mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0 transform translate-y-4">
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">R&eacute;sum&eacute; &#8599;</a>
+                        <a href="#projects" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">View Projects</a>
+                        <a href="#footer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">Get in Touch</a>
                     </div>
                 </div>
                 
@@ -252,7 +332,7 @@
                         <div class="flex flex-col lg:flex-row gap-8 w-full lg:col-span-2">
                             <!-- Chapter 1: Profile -->
                             <div id="about" class="chapter-card group relative h-auto min-h-[500px] w-full lg:w-2/3 perspective-1000" data-speed="0.9">
-                                <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+                                <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-colors duration-500">
                                     <div class="flex justify-between items-start border-b border-gold/10 pb-4 mb-6">
                                         <span class="text-xs font-mono text-gold font-bold">01. PROFILE</span>
                                         <span class="text-xs font-mono text-white font-bold">M.S. CS @ UIC</span>
@@ -263,13 +343,15 @@
                                             I am a software engineer driven by the philosophy building and deploying products that provide value. Currently pursuing my <strong>Master's in Computer Science</strong> at the University of Illinois Chicago (GPA 4.0/4.0), I specialize in building scalable, distributed systems.
                                         </p>
                                         <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                                            Most recently I was a <strong>Software Developer Intern at RadioFX Inc.</strong> in Chicago, where I modernized five-year-old microservices, automated Android app creation end to end through a Slack bot, and cut a repository's clone size from <strong>15 GB to 700 MB</strong> while shipping updated apps to the Google Play Store.
+                                        </p>
+                                        <p class="font-sans text-sm text-gray-400 leading-relaxed">
                                             Previously at <strong>TopRankers</strong> and <strong>DRDO</strong>, I engineered solutions for thousands of users, optimizing performance by 20% and implementing AI-driven workflows. I speak fluent React, Python, and Cloud, translating business needs into high-performance digital artifacts.
                                         </p>
                                     </div>
-                                    <div class="mt-8 pt-6 border-t border-gold/10 flex gap-4 text-xs font-mono text-gray-500">
-                                        <span class="text-white font-bold text-2xl">Chicago, IL</span>
-                                        <span class="text-gold">•</span>
-                                        <span class="text-gold text-xl font-bold">Open for Summer 2026 Internships</span>
+                                    <div class="mt-8 pt-6 border-t border-gold/10 flex flex-wrap items-center gap-4">
+                                        <span class="text-white font-bold text-2xl font-mono">Chicago, IL</span>
+                                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">R&eacute;sum&eacute; &#8599;</a>
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +362,7 @@
                         </div>
                         <!-- Chapter 2: Skills (Arsenal) below both on desktop) -->
                         <div id="skills" class="chapter-card group relative h-auto min-h-[500px] w-full perspective-1000 mt-12 lg:mt-16 lg:col-span-2" data-speed="1.1">
-                            <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+                            <div class="card-inner relative lg:absolute lg:inset-0 glass-panel p-8 md:p-12 flex flex-col justify-between transition-colors duration-500">
                                 <div class="flex justify-between items-start border-b border-gold/10 pb-4 mb-6">
                                     <span class="text-xs font-mono text-gold">02. ARSENAL</span>
                                     <span class="text-xs font-mono text-gray-600">Tech Stack</span>
@@ -320,6 +402,10 @@
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Celery</span>
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">FastAPI</span>
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">GraphQL</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Android</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Firebase</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Slack Bot / API</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">End-to-End Testing</span>
                                         </div>
                                     </div>
 
@@ -340,6 +426,9 @@
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Elasticsearch</span>
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">CI/CD (GitHub Actions, Jenkins)</span>
                                             <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Linux</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Microservices</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Google Play Console</span>
+                                            <span class="px-3 py-1 border border-gray-700 rounded hover:border-gold transition-colors">Firebase Remote Config</span>
                                         </div>
                                     </div>
                                 </div>
@@ -360,15 +449,13 @@
                         Mission Log
                     </h2>
 
-                    <!-- Job 1: UIC -->
                     <div class="job-item relative mb-24 md:w-1/2 md:ml-auto md:pl-16 pl-12 opacity-0">
                         <span class="absolute -left-[5px] md:-left-[5px] top-2 w-3 h-3 bg-black border-2 border-gold rounded-full z-10 shadow-gold-glow"></span>
                         <div class="glass-panel p-8 rounded-lg relative hover:border-gold/50 transition-colors">
                             <span class="text-xs font-mono text-gold mb-2 block">Sept 2025 - Present | Chicago, IL</span>
                             <h3 class="text-2xl font-serif text-white mb-1">UIC - Student Affairs Technology</h3>
                             <h4 class="text-sm font-sans text-gray-400 mb-6 uppercase tracking-wider">Full Stack Software Engineer</h4>
-                            
-                            <!-- Toggle Button Mobile -->
+
                             <button onclick="toggleMission('mission-1', this)" class="md:hidden text-xs text-gold border border-gold/30 px-3 py-1 rounded mb-4 w-full text-left">
                                 + View Mission Data
                             </button>
@@ -388,27 +475,52 @@
                         </div>
                     </div>
 
-                    <!-- Job 2: TopRankers -->
                     <div class="job-item relative mb-24 md:w-1/2 md:mr-auto md:pr-16 md:text-right pl-12 md:pl-0 opacity-0">
                         <span class="absolute left-[-5px] md:left-auto md:-right-[5px] top-2 w-3 h-3 bg-black border-2 border-gold rounded-full z-10 shadow-gold-glow"></span>
                         <div class="glass-panel p-8 rounded-lg relative hover:border-gold/50 transition-colors">
-                            <span class="text-xs font-mono text-gold mb-2 block">Aug 2023 - Aug2025 | Bengaluru, India</span>
-                            <h3 class="text-2xl font-serif text-white mb-1">TopRankers Ed-Tech</h3>
-                            <h4 class="text-sm font-sans text-gray-400 mb-6 uppercase tracking-wider">Full Stack Software Engineer</h4>
-                            
-                            <!-- Toggle Button Mobile -->
+                            <span class="text-xs font-mono text-gold mb-2 block">May 2026 - Aug 2026 | Chicago, IL</span>
+                            <h3 class="text-2xl font-serif text-white mb-1">RadioFX Inc.</h3>
+                            <h4 class="text-sm font-sans text-gray-400 mb-6 uppercase tracking-wider">Software Developer Intern</h4>
+
                             <button onclick="toggleMission('mission-2', this)" class="md:hidden text-xs text-gold border border-gold/30 px-3 py-1 rounded mb-4 w-full text-left">
                                 + View Mission Data
                             </button>
 
                             <div id="mission-2" class="hidden md:block">
                                 <ul class="space-y-3 text-sm text-gray-300 font-light leading-relaxed inline-block text-left list-disc pl-4 marker:text-gold">
-                                    <li>Led end-to-end mobile app modernization using <strong>React Native</strong>, redesigning UI/UX and refactoring backend services in <strong>Django, REST Framework, and MySQL</strong> to improve performance and stability across 10K+ active installs.</li>
-                                    <li>Developed an automated <strong>ML-driven content tagging pipeline</strong> using Python, embeddings, and <strong>OpenAI APIs</strong>, enabling auto-classification of 100K+ questions and reducing manual workload by 40%.</li>
-                                    <li>Enhanced <strong>Next.js</strong> application performance by 20%+ via SSR optimization, caching, and code-splitting, and integrated <strong>Celery</strong> & <strong>Redis</strong> for scalable, high-throughput asynchronous processing.</li>
-                                    <li>Mentored junior developers and enforced security best practices including <strong>JWT authentication</strong>, <strong>RBAC</strong>, API hardening, and improved CI/CD workflows using Docker and GitHub Actions.</li>
+                                    <li>Modernized legacy microservices by upgrading dependencies more than five years old, refactoring the code, and improving security, stability and maintainability.</li>
+                                    <li>Built a script that fully automates Android app creation from a Basecamp brief &mdash; Git branch creation, code generation, <strong>Firebase</strong> setup, configuration and build generation, all driven from a <strong>Slack bot</strong>.</li>
+                                    <li>Cut repository clone size from <strong>15 GB to 700 MB</strong> by cleaning history, rewrote the documentation, implemented Remote Config, and published updated Android apps to the <strong>Google Play Store</strong>.</li>
+                                    <li>Hardened the platform with end-to-end testing, updated database schemas and safeguards against <strong>SQL injection</strong>.</li>
                                 </ul>
                                 <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2 md:justify-end">
+                                    <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Android</span>
+                                    <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Firebase</span>
+                                    <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Slack API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-item relative mb-24 md:w-1/2 md:ml-auto md:pl-16 pl-12 opacity-0">
+                        <span class="absolute -left-[5px] md:-left-[5px] top-2 w-3 h-3 bg-black border-2 border-gold rounded-full z-10 shadow-gold-glow"></span>
+                        <div class="glass-panel p-8 rounded-lg relative hover:border-gold/50 transition-colors">
+                            <span class="text-xs font-mono text-gold mb-2 block">Aug 2023 - Aug 2025 | Bengaluru, India</span>
+                            <h3 class="text-2xl font-serif text-white mb-1">TopRankers Ed-Tech</h3>
+                            <h4 class="text-sm font-sans text-gray-400 mb-6 uppercase tracking-wider">Full Stack Software Engineer</h4>
+
+                            <button onclick="toggleMission('mission-3', this)" class="md:hidden text-xs text-gold border border-gold/30 px-3 py-1 rounded mb-4 w-full text-left">
+                                + View Mission Data
+                            </button>
+
+                            <div id="mission-3" class="hidden md:block">
+                                <ul class="space-y-3 text-sm text-gray-300 font-light leading-relaxed list-disc pl-4 marker:text-gold">
+                                    <li>Led end-to-end mobile app modernization using <strong>React Native</strong>, redesigning UI/UX and refactoring backend services in <strong>Django, REST Framework, and MySQL</strong> to improve performance and stability across 10K+ active installs.</li>
+                                    <li>Developed an automated <strong>ML-driven content tagging pipeline</strong> using Python, embeddings, and <strong>OpenAI APIs</strong>, enabling auto-classification of 100K+ questions and reducing manual workload by 40%.</li>
+                                    <li>Enhanced <strong>Next.js</strong> application performance by 20%+ via SSR optimization, caching, and code-splitting, and integrated <strong>Celery</strong> &amp; <strong>Redis</strong> for scalable, high-throughput asynchronous processing.</li>
+                                    <li>Mentored junior developers and enforced security best practices including <strong>JWT authentication</strong>, <strong>RBAC</strong>, API hardening, and improved CI/CD workflows using Docker and GitHub Actions.</li>
+                                </ul>
+                                <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2">
                                     <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">React Native</span>
                                     <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Django</span>
                                     <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Redis</span>
@@ -417,31 +529,30 @@
                         </div>
                     </div>
 
-                    <!-- Job 3: DRDO -->
-                    <div class="job-item relative mb-24 md:w-1/2 md:ml-auto md:pl-16 pl-12 opacity-0">
-                        <span class="absolute -left-[5px] md:-left-[5px] top-2 w-3 h-3 bg-black border-2 border-gold rounded-full z-10 shadow-gold-glow"></span>
+                    <div class="job-item relative mb-24 md:w-1/2 md:mr-auto md:pr-16 md:text-right pl-12 md:pl-0 opacity-0">
+                        <span class="absolute left-[-5px] md:left-auto md:-right-[5px] top-2 w-3 h-3 bg-black border-2 border-gold rounded-full z-10 shadow-gold-glow"></span>
                         <div class="glass-panel p-8 rounded-lg relative hover:border-gold/50 transition-colors">
                             <span class="text-xs font-mono text-gold mb-2 block">2023 | Research Internship</span>
                             <h3 class="text-2xl font-serif text-white mb-1">ML Research Assistant</h3>
                             <h4 class="text-sm font-sans text-gray-400 mb-6 uppercase tracking-wider">DRDO - CASDIC</h4>
-                            
-                            <!-- Toggle Button Mobile -->
-                            <button onclick="toggleMission('mission-3', this)" class="md:hidden text-xs text-gold border border-gold/30 px-3 py-1 rounded mb-4 w-full text-left">
+
+                            <button onclick="toggleMission('mission-4', this)" class="md:hidden text-xs text-gold border border-gold/30 px-3 py-1 rounded mb-4 w-full text-left">
                                 + View Mission Data
                             </button>
 
-                            <div id="mission-3" class="hidden md:block">
-                                <ul class="space-y-3 text-sm text-gray-300 font-light leading-relaxed list-disc pl-4 marker:text-gold">
+                            <div id="mission-4" class="hidden md:block">
+                                <ul class="space-y-3 text-sm text-gray-300 font-light leading-relaxed inline-block text-left list-disc pl-4 marker:text-gold">
                                     <li>Researched and implemented <strong>CNN and RNN</strong> architectures to de-interleave radar pulses.</li>
                                     <li>Developed real-time Python algorithms for aircraft position detection, optimizing for low-latency.</li>
                                 </ul>
-                                <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2">
+                                <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2 md:justify-end">
                                     <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">Python</span>
                                     <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gold">TensorFlow</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
@@ -452,64 +563,177 @@
                     <h2 class="font-serif text-5xl md:text-6xl text-white">Selected Works</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-20 max-w-7xl mx-auto min-h-[500px]">
-                    
-                    <!-- Project 1 -->
-                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-20 max-w-7xl mx-auto">
+
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2 md:col-span-2">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">RAG Research Pipeline</h3>
-                            <a href="https://github.com/San-gularity/delta_RAG_pipeline" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
-                            Built an end-to-end RAG pipeline that ingests and processes hundreds of academic PDFs using automated extraction, chunking, metadata tagging, and embedding generation for downstream LLM/NLP tasks.
-                        </p>
-                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
-                            Developed a distributed MapReduce-style preprocessing and indexing system using Apache Spark, Hadoop, PySpark, EMR, and Delta Lake, with FAISS/Lucene/HNSW powering scalable hybrid (semantic + BM25) similarity search across millions of documents.
-                        </p>
-                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
-                            Deployed the full stack on AWS (EC2, S3, EMR, Lambda, IAM) with containerized services (Docker), reproducible IaC (Terraform), and a demo showcasing query → retrieval → LLM answer generation using Llama 3.1 & OpenAI APIs.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">AWS EMR</span>
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Python</span>
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">LLMs</span>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://github.com/San-gularity/delta_RAG_pipeline" target="_blank" rel="noopener noreferrer" class="stretch">RAG Research Pipeline</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Research</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">An end-to-end retrieval-augmented generation pipeline that ingests hundreds of academic PDFs &mdash; automated extraction, chunking, metadata tagging and embedding generation. Distributed MapReduce-style preprocessing on <strong>Spark, Hadoop, EMR and Delta Lake</strong>, with FAISS/Lucene/HNSW powering hybrid semantic + BM25 search across millions of documents, deployed on AWS with Docker and Terraform.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">AWS EMR</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Spark</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Delta Lake</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">LLMs</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://github.com/San-gularity/delta_RAG_pipeline" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">GitHub &#8599;</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
-                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">AI Timetable Generator</h3>
-                            <a href="https://github.com/San-gularity/Time-Table-Generator" target="_blank" class="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded hover:border-gold hover:text-gold transition-colors">GITHUB ↗</a>
-                        </div>
-                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
-                            A scheduling automation tool leveraging <strong>Genetic Algorithms</strong> and constraint logic programming. Solves complex faculty-student time conflicts and was deployed for departmental usage.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Genetic Algos</span>
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">AI Logic</span>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://san-gularity.github.io/FoodBillCalculator/" target="_blank" rel="noopener noreferrer" class="stretch">Split the Bill</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Web app</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Scan a receipt, tap who ate what, and it works out what everyone owes to the cent &mdash; tax and tip included. Built to end the group-dinner arithmetic argument.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">JavaScript</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">OCR</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Web</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://san-gularity.github.io/FoodBillCalculator/" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Live app &#8599;</a>
+                                <a href="https://github.com/San-gularity/FoodBillCalculator" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Source &#8599;</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
-                    <!-- <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2 md:col-span-2">
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">Cloud Native Analytics</h3>
-                            <span class="text-xs font-mono text-gray-500">ARCHIVED</span>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://san-gularity.github.io/space-boy/" target="_blank" rel="noopener noreferrer" class="stretch">Space-Boy</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Web game</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">A 2D platformer built in Unity and C#, and the first game I ever finished. Originally a download-only college project, now compiled to WebGL and playable straight in the browser.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Unity</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">C#</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">WebGL</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://san-gularity.github.io/space-boy/" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Play &#8599;</a>
+                                <a href="https://github.com/San-gularity/2D-Platfromer-Unity" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Source &#8599;</a>
+                                <a href="https://san-gularity.itch.io/space-boy" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">itch.io &#8599;</a>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-400 mb-6 leading-relaxed max-w-2xl">
-                             Architected scalable microservices for data processing using <strong>Docker, Kubernetes, and Kafka</strong>. Focused on high-throughput event streaming and real-time data visualization dashboards.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Kubernetes</span>
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Kafka</span>
-                            <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">DevOps</span>
-                        </div>
-                    </div> -->
+                    </div>
 
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://san-gularity.github.io/flappy-rocket/" target="_blank" rel="noopener noreferrer" class="stretch">Flappy Rocket</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Web game</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Flappy Bird with a rocket &mdash; infinite world generation, endless obstacles and a high score that follows you back. Shipped on Google Play, now rebuilt for the browser.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Unity</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">C#</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">WebGL</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://san-gularity.github.io/flappy-rocket/" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Play &#8599;</a>
+                                <a href="https://github.com/San-gularity/Flappy-Rocket-Unity" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Source &#8599;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://chromewebstore.google.com/detail/leetcode-to-notion/kdlncolgahgakhkfaipeillkppfhooag" target="_blank" rel="noopener noreferrer" class="stretch">Leetion</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Chrome extension</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Save a LeetCode problem straight into Notion in one click &mdash; the problem, your solution, and the tags to revise by. Published on the Chrome Web Store.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">JavaScript</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Notion API</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Chrome</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://chromewebstore.google.com/detail/leetcode-to-notion/kdlncolgahgakhkfaipeillkppfhooag" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Chrome Store &#8599;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://github.com/San-gularity/Time-Table-Generator" target="_blank" rel="noopener noreferrer" class="stretch">AI Timetable Generator</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">AI</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">A scheduling automation tool using <strong>genetic algorithms</strong> and constraint logic programming. Solves complex faculty-student time conflicts and was deployed for departmental use.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Genetic Algos</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Python</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://github.com/San-gularity/Time-Table-Generator" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">GitHub &#8599;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card group glass-panel p-8 rounded-xl relative overflow-hidden flex flex-col hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gold/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-gold/20 transition-all"></div>
+                        <div class="card-body flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4 gap-4">
+                                <h3 class="text-2xl font-serif text-white group-hover:text-gold transition-colors">
+                                    <a href="https://chromewebstore.google.com/detail/clown-gpt-chatgpt-copy-bl/ohdffmcikkokalnfobnpbipkicimkppg" target="_blank" rel="noopener noreferrer" class="stretch">Clown GPT</a>
+                                </h3>
+                                <span class="text-[10px] font-mono text-gold border border-gold/30 px-2 py-1 rounded shrink-0 uppercase tracking-widest">Chrome extension</span>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Blocks copying on ChatGPT and roasts you for trying. Built as a joke, still installed by strangers.</p>
+                            <div class="mt-auto">
+                                <div class="flex flex-wrap gap-2 mb-5">
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">JavaScript</span>
+                                <span class="text-xs font-mono text-gold bg-black/50 px-2 py-1 rounded border border-gold/20">Chrome</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3 above-stretch">
+                                <a href="https://chromewebstore.google.com/detail/clown-gpt-chatgpt-copy-bl/ohdffmcikkokalnfobnpbipkicimkppg" target="_blank" rel="noopener noreferrer" class="gold-btn px-4 py-2 rounded text-xs tracking-widest uppercase">Chrome Store &#8599;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="px-6 md:px-20 max-w-7xl mx-auto mt-14 text-center">
+                    <p class="text-sm text-gray-500 mb-5">Smaller experiments live on the playground.</p>
+                    <a href="https://san-gularity.github.io/" target="_blank" rel="noopener noreferrer" class="gold-btn inline-block px-8 py-4 rounded text-xs tracking-widest uppercase">Visit the Playground &#8599;</a>
                 </div>
             </section>
 
@@ -522,9 +746,11 @@
                     <a href="mailto:sanath0307@gmail.com" class="block font-serif text-2xl md:text-4xl text-white hover:text-gold hover:italic transition-all duration-300">
                         sanath0307@gmail.com
                     </a>
-                    <div class="flex flex-col md:flex-row justify-center gap-8 mt-12 font-sans text-sm tracking-widest uppercase text-gray-400">
-                        <a href="https://linkedin.com/in/sanath0307" target="_blank" class="hover:text-gold text-2xl transition-colors nav-link">LinkedIn</a>
-                        <a href="https://github.com/San-gularity" target="_blank" class="hover:text-gold text-2xl transition-colors nav-link">GitHub</a>
+                    <div class="flex flex-wrap justify-center gap-4 mt-12">
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">R&eacute;sum&eacute; &#8599;</a>
+                        <a href="https://linkedin.com/in/sanath0307" target="_blank" rel="noopener noreferrer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">LinkedIn &#8599;</a>
+                        <a href="https://github.com/San-gularity" target="_blank" rel="noopener noreferrer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">GitHub &#8599;</a>
+                        <a href="https://san-gularity.github.io/" target="_blank" rel="noopener noreferrer" class="gold-btn px-6 py-3 rounded text-xs tracking-widest uppercase">Playground &#8599;</a>
                     </div>
                     <p class="mt-24 text-[10px] text-gray-600">San-gularity © 2025 | Chicago, IL</p>
                 </div>
@@ -552,26 +778,6 @@
             btn.textContent = '+ View Mission Data';
         }
     }
-    </script>
-
-    <script>
-    // Theme toggle logic
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleText = document.getElementById('theme-toggle-text');
-    function setTheme(mode) {
-        document.documentElement.setAttribute('data-theme', mode);
-        if (mode === 'light') {
-            themeToggleText.textContent = 'Dark Mode';
-        } else {
-            themeToggleText.textContent = 'Light Mode';
-        }
-    }
-    // Default to dark
-    setTheme('dark');
-    themeToggle.addEventListener('click', function() {
-        const current = document.documentElement.getAttribute('data-theme');
-        setTheme(current === 'dark' ? 'light' : 'dark');
-    });
     </script>
 
     <script>
@@ -762,24 +968,10 @@
                 }
             });
 
-            chapter.addEventListener('mousemove', (e) => {
-                const rect = chapter.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xPct = (x / rect.width) - 0.5;
-                const yPct = (y / rect.height) - 0.5;
-
-                gsap.to(chapter.querySelector('.card-inner'), {
-                    rotationY: xPct * 5,
-                    rotationX: -yPct * 5,
-                    duration: 0.5,
-                    ease: "power2.out"
-                });
-            });
-
-            chapter.addEventListener('mouseleave', () => {
-                gsap.to(chapter.querySelector('.card-inner'), { rotationY: 0, rotationX: 0, duration: 0.5 });
-            });
+            // No 3D tilt here on purpose: rotating the panel promoted it to a
+            // composited layer and resampled the text, which is what made the
+            // whole section look like it had blurred on hover. The glow and
+            // the light sweep give the same life without touching the glyphs.
         });
 
         // D. Experience Timeline
